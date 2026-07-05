@@ -16,108 +16,230 @@
 
 <style>
 body {
-	background-color: #f8f9fe;
-	font-family: 'Segoe UI', sans-serif;
-	color: #525f7f;
+	background: #f2f4f8;
+	font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto,
+		sans-serif;
+	color: #1a1e2b;
+	min-height: 100vh;
 }
-
-/* Header */
-.admin-header {
-	background: white;
-	padding: 20px 0;
-	border-bottom: 1px solid #e9ecef;
-	margin-bottom: 30px;
+.main-content {
+	margin-left: 260px;
+	padding: 40px 48px 60px;
+	min-height: 100vh;
+	background: #f2f4f8;
 }
-
-/* Card */
-.admin-card {
-	background: white;
-	border-radius: 12px;
+.page-title {
+	font-size: 1.8rem;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+	color: #1a1e2b;
+}
+.page-subtitle {
+	font-size: 0.95rem;
+	color: #6b7280;
+	margin-top: 4px;
+}
+.content-card {
+	background: #ffffff;
+	border-radius: 28px;
 	border: none;
-	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-	padding: 25px;
+	padding: 28px 32px;
+	margin-bottom: 28px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), 0 1px 3px rgba(0, 0, 0, 0.03);
+	transition: box-shadow 0.3s ease;
 }
-
-/* Table */
-.table thead {
-	background: #f4f7fe;
-	color: #8898aa;
+.content-card:hover {
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+}
+.table-custom {
+	font-size: 0.9rem;
+}
+.table-custom thead th {
+	background: #f8f9fc;
+	color: #6b7280;
+	font-weight: 600;
 	text-transform: uppercase;
-	font-size: 0.75rem;
-	letter-spacing: 1px;
+	font-size: 0.7rem;
+	letter-spacing: 0.4px;
+	padding: 12px 14px;
+	border-bottom: 2px solid #f1f3f7;
 }
-
-/* Buttons Style */
+.table-custom tbody td {
+	padding: 12px 14px;
+	vertical-align: middle;
+	border-bottom: 1px solid #f1f3f7;
+}
+.table-custom tbody tr:hover {
+	background: #f8f9fc;
+}
 .btn-edit {
-	color: #5e72e4;
-	background: #f0f3ff;
+	background: #e0e7ff;
+	color: #3730a3;
 	border: none;
-	padding: 5px 12px;
-	border-radius: 6px;
-	font-size: 0.8rem;
+	border-radius: 40px;
+	padding: 4px 14px;
 	font-weight: 600;
-	text-decoration: none;
-	margin-right: 5px;
+	font-size: 0.75rem;
+	transition: all 0.2s ease;
 }
-
 .btn-edit:hover {
-	background: #5e72e4;
+	background: #3730a3;
 	color: white;
 }
-
 .btn-delete {
-	color: #f5365c;
-	background: #fff5f7;
+	background: #fee2e2;
+	color: #991b1b;
 	border: none;
-	padding: 5px 12px;
-	border-radius: 6px;
-	font-size: 0.8rem;
+	border-radius: 40px;
+	padding: 4px 14px;
 	font-weight: 600;
-	text-decoration: none;
+	font-size: 0.75rem;
+	transition: all 0.2s ease;
 }
-
 .btn-delete:hover {
-	background: #f5365c;
+	background: #991b1b;
 	color: white;
 }
-
-/* Form */
+.btn-outline-custom {
+	background: transparent;
+	color: #1a1e2b;
+	border: 1.5px solid #e2e6ee;
+	border-radius: 40px;
+	padding: 6px 18px;
+	font-weight: 600;
+	font-size: 0.85rem;
+	transition: all 0.2s ease;
+}
+.btn-outline-custom:hover {
+	background: #f0f2f6;
+	border-color: #c5cad6;
+	transform: translateY(-2px);
+}
 .input-group .form-control {
-	border-radius: 8px 0 0 8px;
-	border: 1px solid #dee2e6;
+	border-radius: 14px 0 0 14px;
+	border: 1.5px solid #e2e6ee;
+	background: #fafbfc;
+	padding: 10px 16px;
+	font-size: 0.95rem;
 }
-
+.input-group .form-control:focus {
+	border-color: #8e95a3;
+	box-shadow: 0 0 0 4px rgba(26, 30, 43, 0.04);
+	outline: none;
+}
 .btn-add {
-	background: #5e72e4;
+	background: #1a1e2b;
 	color: white;
-	border-radius: 0 8px 8px 0;
+	border-radius: 0 14px 14px 0;
 	border: none;
-	padding: 0 20px;
+	padding: 0 24px;
+	font-weight: 600;
+	transition: all 0.2s ease;
+}
+.btn-add:hover {
+	background: #2c3347;
+	color: white;
+}
+.modal-content-custom {
+	border-radius: 28px;
+	border: none;
+	box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+	overflow: hidden;
+}
+.modal-header-custom {
+	padding: 20px 28px;
+	border-bottom: 1px solid #f1f3f7;
+	background: #fafbfc;
+}
+.modal-body-custom {
+	padding: 28px;
+}
+.modal-footer-custom {
+	padding: 16px 28px 28px;
+	border-top: 1px solid #f1f3f7;
+	background: #fafbfc;
+}
+@media (max-width: 992px) {
+	.main-content { margin-left: 0; padding: 24px 20px 40px; }
+}
+@media (max-width: 768px) {
+	.main-content { padding: 16px 14px 32px; }
+	.content-card { padding: 16px; }
 }
 </style>
 </head>
 <body>
 
-	<div class="admin-header shadow-sm">
-		<div
-			class="container d-flex justify-content-between align-items-center">
-			<h5 class="m-0 fw-bold">
-				<i class="fa-solid fa-list-ul text-primary me-2"></i> Metadata
-				Configuration
-			</h5>
-			<a href="${pageContext.request.contextPath}/dashboard"
-				class="btn btn-sm btn-outline-secondary">Back to Dashboard</a>
-		</div>
-	</div>
+	<!-- Sidebar -->
+	<jsp:include page="/WEB-INF/jsp/sidebar.jsp">
+		<jsp:param name="activePage" value="categories" />
+	</jsp:include>
 
-	<div class="container">
+	<!-- Main Content -->
+	<div class="main-content">
+
+		<!-- Page Header -->
+		<div
+			class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+			<div>
+				<h3 class="page-title">
+					<i class="fa-solid fa-list-ul text-primary me-2"></i> Metadata
+					Configuration
+				</h3>
+				<p class="page-subtitle">
+					<i class="fa-regular fa-circle-info me-1"></i> Manage categories
+					and tags for your cheat sheets
+				</p>
+			</div>
+			<div class="d-flex gap-2 mt-2 mt-md-0">
+				<a href="${pageContext.request.contextPath}/dashboard"
+					class="btn btn-outline-custom">
+					<i class="fa-solid fa-arrow-left me-1"></i> Dashboard
+				</a>
+				<button onclick="location.reload()"
+					class="btn btn-outline-custom">
+					<i class="fa-solid fa-rotate me-1"></i> Refresh
+				</button>
+			</div>
+		</div>
+
+		<!-- Alerts -->
+		<c:if test="${not empty successMsg}">
+			<div
+				class="alert alert-success alert-dismissible fade show shadow-sm mb-4 alert-custom"
+				role="alert">
+				<div class="d-flex align-items-center gap-2">
+					<i class="fa-solid fa-circle-check text-success fs-5"></i> <span
+						class="fw-semibold">${successMsg}</span>
+				</div>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
+			<% session.removeAttribute("successMsg"); %>
+		</c:if>
+		<c:if test="${not empty errorMsg}">
+			<div
+				class="alert alert-danger alert-dismissible fade show shadow-sm mb-4 alert-custom"
+				role="alert">
+				<div class="d-flex align-items-center gap-2">
+					<i class="fa-solid fa-circle-exclamation text-danger fs-5"></i> <span
+						class="fw-semibold">${errorMsg}</span>
+				</div>
+				<button type="button" class="btn-close" data-bs-dismiss="alert"
+					aria-label="Close"></button>
+			</div>
+			<% session.removeAttribute("errorMsg"); %>
+		</c:if>
+
+		<!-- Two Columns -->
 		<div class="row g-4">
 
+			<!-- Categories -->
 			<div class="col-lg-6">
-				<div class="admin-card">
-					<h6 class="fw-bold mb-3">
-						<i class="fa-solid fa-folder me-2 text-primary"></i> Categories
-					</h6>
+				<div class="content-card h-100">
+					<h5 class="fw-bold mb-3" style="color: #1a1e2b;">
+						<i class="fa-solid fa-folder text-primary me-2"></i> Categories
+					</h5>
 
 					<form:form
 						action="${pageContext.request.contextPath}/admin/metadata/category/save"
@@ -129,43 +251,53 @@ body {
 						</div>
 					</form:form>
 
-					<table class="table align-middle">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th class="text-end">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="cat" items="${categories}">
+					<div class="table-responsive">
+						<table class="table table-custom table-hover align-middle">
+							<thead>
 								<tr>
-									<td><span class="badge bg-light text-dark">#${cat.categoryId}</span></td>
-									<td class="fw-semibold text-dark">${cat.name}</td>
-									<td class="text-end">
-										<button type="button" class="btn btn-edit"
-											data-bs-toggle="modal" data-bs-target="#editCategoryModal"
-											data-id="${cat.categoryId}" data-name="${cat.name}">
-											<i class="fa-solid fa-pen"></i> Edit
-										</button> <a
-										href="${pageContext.request.contextPath}/admin/metadata/category/delete/${cat.categoryId}"
-										class="btn btn-delete"
-										onclick="return confirm('သေချာပါသလားဗျာ?')"> <i
-											class="fa-solid fa-trash"></i> Delete
-									</a>
-									</td>
+									<th>ID</th>
+									<th>Name</th>
+									<th class="text-end">Action</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach var="cat" items="${categories}">
+									<tr>
+										<td><span class="badge bg-light text-dark rounded-pill px-3">#${cat.categoryId}</span></td>
+										<td class="fw-semibold text-dark">${cat.name}</td>
+										<td class="text-end">
+											<button type="button" class="btn btn-edit"
+												data-bs-toggle="modal" data-bs-target="#editCategoryModal"
+												data-id="${cat.categoryId}" data-name="${cat.name}">
+												<i class="fa-solid fa-pen me-1"></i> Edit
+											</button>
+											<a
+												href="${pageContext.request.contextPath}/admin/metadata/category/delete/${cat.categoryId}"
+												class="btn btn-delete"
+												onclick="return confirm('Delete this category?')">
+												<i class="fa-solid fa-trash-can me-1"></i> Delete
+											</a>
+										</td>
+									</tr>
+								</c:forEach>
+								<c:if test="${empty categories}">
+									<tr>
+										<td colspan="3" class="text-center text-muted py-3">No
+											categories yet.</td>
+									</tr>
+								</c:if>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 
+			<!-- Tags -->
 			<div class="col-lg-6">
-				<div class="admin-card">
-					<h6 class="fw-bold mb-3">
-						<i class="fa-solid fa-tags me-2 text-primary"></i> Meta Tags
-					</h6>
+				<div class="content-card h-100">
+					<h5 class="fw-bold mb-3" style="color: #1a1e2b;">
+						<i class="fa-solid fa-tags text-primary me-2"></i> Meta Tags
+					</h5>
 
 					<form:form
 						action="${pageContext.request.contextPath}/admin/metadata/tag/save"
@@ -177,45 +309,56 @@ body {
 						</div>
 					</form:form>
 
-					<table class="table align-middle">
-						<thead>
-							<tr>
-								<th>ID</th>
-								<th>Name</th>
-								<th class="text-end">Action</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="tag" items="${tags}">
+					<div class="table-responsive">
+						<table class="table table-custom table-hover align-middle">
+							<thead>
 								<tr>
-									<td><span class="badge bg-light text-dark">#${tag.tagId}</span></td>
-									<td class="fw-semibold text-dark">${tag.name}</td>
-									<td class="text-end">
-										<button type="button" class="btn btn-edit"
-											data-bs-toggle="modal" data-bs-target="#editTagModal"
-											data-id="${tag.tagId}" data-name="${tag.name}">
-											<i class="fa-solid fa-pen"></i> Edit
-										</button> <a
-										href="${pageContext.request.contextPath}/admin/metadata/tag/delete/${tag.tagId}"
-										class="btn btn-delete"
-										onclick="return confirm('သေချာပါသလားဗျာ?')"> <i
-											class="fa-solid fa-trash"></i> Delete
-									</a>
-									</td>
+									<th>ID</th>
+									<th>Name</th>
+									<th class="text-end">Action</th>
 								</tr>
-							</c:forEach>
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								<c:forEach var="tag" items="${tags}">
+									<tr>
+										<td><span class="badge bg-light text-dark rounded-pill px-3">#${tag.tagId}</span></td>
+										<td class="fw-semibold text-dark">${tag.name}</td>
+										<td class="text-end">
+											<button type="button" class="btn btn-edit"
+												data-bs-toggle="modal" data-bs-target="#editTagModal"
+												data-id="${tag.tagId}" data-name="${tag.name}">
+												<i class="fa-solid fa-pen me-1"></i> Edit
+											</button>
+											<a
+												href="${pageContext.request.contextPath}/admin/metadata/tag/delete/${tag.tagId}"
+												class="btn btn-delete"
+												onclick="return confirm('Delete this tag?')">
+												<i class="fa-solid fa-trash-can me-1"></i> Delete
+											</a>
+										</td>
+									</tr>
+								</c:forEach>
+								<c:if test="${empty tags}">
+									<tr>
+										<td colspan="3" class="text-center text-muted py-3">No
+											tags yet.</td>
+									</tr>
+								</c:if>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
 
+	<!-- Edit Category Modal -->
 	<div class="modal fade" id="editCategoryModal" tabindex="-1"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content style-radius border-0 shadow">
-				<div class="modal-header">
+			<div class="modal-content modal-content-custom">
+				<div class="modal-header modal-header-custom">
 					<h5 class="modal-title fw-bold">
 						<i class="fa-solid fa-pen-to-square text-primary me-2"></i> Edit
 						Category
@@ -224,19 +367,18 @@ body {
 						aria-label="Close"></button>
 				</div>
 				<form id="editCategoryForm" action="" method="post">
-					<div class="modal-body">
+					<div class="modal-body modal-body-custom">
 						<div class="mb-3">
-							<label class="form-label fw-bold small text-muted">Category
-								Name</label> <input type="text" name="name" id="editCategoryName"
-								class="form-control rounded-3" required />
+							<label class="form-label fw-semibold">Category Name</label> <input
+								type="text" name="name" id="editCategoryName"
+								class="form-control" required />
 						</div>
 					</div>
-					<div class="modal-footer border-0">
-						<button type="button"
-							class="btn btn-sm btn-light rounded-pill px-3"
+					<div class="modal-footer modal-footer-custom">
+						<button type="button" class="btn btn-light rounded-pill px-4"
 							data-bs-dismiss="modal">Cancel</button>
 						<button type="submit"
-							class="btn btn-sm btn-primary rounded-pill px-4 fw-bold">Update
+							class="btn btn-dark rounded-pill px-4 fw-bold">Update
 							Category</button>
 					</div>
 				</form>
@@ -244,11 +386,12 @@ body {
 		</div>
 	</div>
 
+	<!-- Edit Tag Modal -->
 	<div class="modal fade" id="editTagModal" tabindex="-1"
 		aria-hidden="true">
 		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content style-radius border-0 shadow">
-				<div class="modal-header">
+			<div class="modal-content modal-content-custom">
+				<div class="modal-header modal-header-custom">
 					<h5 class="modal-title fw-bold">
 						<i class="fa-solid fa-pen-to-square text-primary me-2"></i> Edit
 						Meta Tag
@@ -257,20 +400,18 @@ body {
 						aria-label="Close"></button>
 				</div>
 				<form id="editTagForm" action="" method="post">
-					<div class="modal-body">
+					<div class="modal-body modal-body-custom">
 						<div class="mb-3">
-							<label class="form-label fw-bold small text-muted">Tag
-								Name</label> <input type="text" name="name" id="editTagName"
-								class="form-control rounded-3" required />
+							<label class="form-label fw-semibold">Tag Name</label> <input
+								type="text" name="name" id="editTagName" class="form-control"
+								required />
 						</div>
 					</div>
-					<div class="modal-footer border-0">
-						<button type="button"
-							class="btn btn-sm btn-light rounded-pill px-3"
+					<div class="modal-footer modal-footer-custom">
+						<button type="button" class="btn btn-light rounded-pill px-4"
 							data-bs-dismiss="modal">Cancel</button>
 						<button type="submit"
-							class="btn btn-sm btn-primary rounded-pill px-4 fw-bold">Update
-							Tag</button>
+							class="btn btn-dark rounded-pill px-4 fw-bold">Update Tag</button>
 					</div>
 				</form>
 			</div>
@@ -278,36 +419,30 @@ body {
 	</div>
 
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js">
+	</script>
 	<script>
-		// 💡 Java Web URL Context Path ကို Dynamic ယူရန်
 		const ctxPath = "${pageContext.request.contextPath}";
 
-		// 🎯 Category Edit ခလုတ်နှိပ်လျှင် Data များအား Modal Form ထဲဖြည့်သွင်းပေးခြင်း Logic
+		// Category Edit Modal
 		const editCategoryModal = document.getElementById('editCategoryModal');
 		editCategoryModal.addEventListener('show.bs.modal', function(event) {
 			const button = event.relatedTarget;
 			const catId = button.getAttribute('data-id');
 			const catName = button.getAttribute('data-name');
-
-			// Form action url ကို ID အလိုက် ပြောင်းလဲပေးခြင်း
 			document.getElementById('editCategoryForm').action = ctxPath
 					+ "/admin/metadata/category/update/" + catId;
-			// Input box ထဲသို့ လက်ရှိနာမည်ဟောင်း ထည့်ပေးခြင်း
 			document.getElementById('editCategoryName').value = catName;
 		});
 
-		// 🎯 Tag Edit ခလုတ်နှိပ်လျှင် Data များအား Modal Form ထဲဖြည့်သွင်းပေးခြင်း Logic
+		// Tag Edit Modal
 		const editTagModal = document.getElementById('editTagModal');
 		editTagModal.addEventListener('show.bs.modal', function(event) {
 			const button = event.relatedTarget;
 			const tagId = button.getAttribute('data-id');
 			const tagName = button.getAttribute('data-name');
-
-			// Form action url ကို ID အလိုက် ပြောင်းလဲပေးခြင်း
 			document.getElementById('editTagForm').action = ctxPath
 					+ "/admin/metadata/tag/update/" + tagId;
-			// Input box ထဲသို့ လက်ရှိနာမည်ဟောင်း ထည့်ပေးခြင်း
 			document.getElementById('editTagName').value = tagName;
 		});
 	</script>

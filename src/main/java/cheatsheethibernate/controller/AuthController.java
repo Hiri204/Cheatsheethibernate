@@ -108,7 +108,7 @@ public class AuthController {
             @RequestParam("password") String password,
             HttpSession session, Model model) {
 
-        // Find user by username or email using UserService
+        // 1️⃣ Find user by username or email
         User user = userService.findByUsernameOrEmail(loginId);
 
         if (user == null) {
@@ -116,14 +116,7 @@ public class AuthController {
             return "login";
         }
 
-        // Verify password using CheatSheetService
-        User validatedUser = userService.validateCredentials(user.getUsername(), password);
-        if (validatedUser == null) {
-            model.addAttribute("error", "Invalid username or password.");
-            return "login";
-        }
-
-        // Check if user is suspended
+        // 2️⃣ 🔴 FIRST: Check if user is suspended (BAN CHECK - MUST BE FIRST)
         if ("suspended".equals(user.getStatus())) {
             BannedUser banInfo = userService.getBanInfo(user.getUserId());
 
@@ -145,7 +138,14 @@ public class AuthController {
             return "login";
         }
 
-        // Successful login
+        // 3️⃣ SECOND: Verify password (Only if user is NOT suspended)
+        User validatedUser = userService.validateCredentials(user.getUsername(), password);
+        if (validatedUser == null) {
+            model.addAttribute("error", "Invalid username or password.");
+            return "login";
+        }
+
+        // 4️⃣ Successful login
         session.setAttribute("loginUser", user);
         return "redirect:/dashboard";
     }
